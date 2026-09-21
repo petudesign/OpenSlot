@@ -1,0 +1,19 @@
+{
+  "id": "com.petudesign.openslot",
+  "name": "OpenSlot",
+  "version": "0.1.0",
+  "entry": "index.html",
+  "schemaVersion": 2,
+  "permissionPolicyVersion": 1,
+  "bridgeVersion": "2.0",
+  "permissions": [
+    {
+      "name": "display",
+      "required": true
+    },
+    {
+      "name": "audio.capture",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# MemoMind Open Platform License
+
+Use of the MemoMind Open Platform SDK bundle is subject to the MemoMind Open
+Platform Terms:
+
+https://open-platform.memo-mind.com/terms
+
+By using, copying, modifying, or distributing the vendored SDK bundle, comply
+with those terms.

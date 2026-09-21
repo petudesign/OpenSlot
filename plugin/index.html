@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenSlot</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MEMOMIND ONE · PROTOTYPE</p>
+          <h1>OpenSlot</h1>
+          <p class="subtitle">Conversational availability, kept small.</p>
+        </div>
+        <div id="runtime-status" class="status-pill" data-state="loading">Starting…</div>
+      </header>
+
+      <section class="grid">
+        <section class="card primary-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">MICROPHONE PIPELINE</p>
+              <h2>Capture from Studio</h2>
+            </div>
+            <span id="audio-state" class="state-label">Not started</span>
+          </div>
+          <p class="muted">Uses the official <code>gm.audio</code> stream. No browser microphone fallback.</p>
+          <div class="button-row">
+            <button id="start-capture" class="button button-primary">Start microphone capture</button>
+            <button id="stop-capture" class="button" disabled>Stop capture</button>
+          </div>
+          <div class="metrics" aria-live="polite">
+            <div><span>Chunks</span><strong id="chunk-count">0</strong></div>
+            <div><span>Frames</span><strong id="frame-count">0</strong></div>
+            <div><span>Opus bytes</span><strong id="byte-count">0</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">TEMPORARY STT ADAPTER</p>
+              <h2>Process a transcript</h2>
+            </div>
+          </div>
+          <p class="muted">Until a local STT backend is selected, use a test transcript to exercise intent, date/time, calendar, and HUD.</p>
+          <form id="transcript-form" class="transcript-form">
+            <label for="transcript-input">Transcript</label>
+            <textarea id="transcript-input" rows="3">Does Thursday work for you?</textarea>
+            <button class="button button-primary" type="submit">Process transcript</button>
+          </form>
+          <div class="phrase-list" aria-label="Supported test phrases">
+            <button class="phrase-button" data-transcript="Does Thursday work for you?">Thursday?</button>
+            <button class="phrase-button" data-transcript="Are you free Friday?">Friday?</button>
+            <button class="phrase-button" data-transcript="Can you do Thursday at 3?">Thursday at 3</button>
+            <button class="phrase-button" data-transcript="How about tomorrow at 2?">Tomorrow at 2</button>
+          </div>
+        </section>
+
+        <section class="card hud-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">HUD PREVIEW</p>
+              <h2>600 × 350 output</h2>
+            </div>
+            <span id="hud-state" class="state-label">Dismissed</span>
+          </div>
+          <div id="hud-preview" class="hud-preview" aria-live="polite">Waiting for an availability question…</div>
+          <p class="muted small">The same text is sent through <code>gm.display.updateText()</code> when the simulator is connected.</p>
+        </section>
+
+        <section class="card debug-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">DEBUG LOG</p>
+              <h2>Pipeline events</h2>
+            </div>
+            <button id="clear-log" class="text-button" type="button">Clear</button>
+          </div>
+          <pre id="debug-log" class="debug-log" aria-live="polite"></pre>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="./plugin.js"></script>
+  </body>
+</html>
